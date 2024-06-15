@@ -13,8 +13,9 @@ t_data %>%
                     values = rescale(c(min(t_data$t_diff), 0, max(t_data$t_diff))),
                     n.breaks = 12) +
   coord_cartesian(expand=FALSE) +
-  scale_x_continuous(breaks=seq(1890, 2020, 30)) +
+  scale_x_continuous(breaks=seq(1890, 2024, 30)) +
   labs(title= glue("Global temperature change ({min(t_data$year)}-{max(t_data$year)})")) +
+ # hrbrthemes::theme_ft_rc()
   theme_void() +
   theme(
     axis.text.x = element_text(color="white",

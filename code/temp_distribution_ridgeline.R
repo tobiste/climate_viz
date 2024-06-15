@@ -47,7 +47,7 @@ t_data %>%
              y = factor(year, levels = seq(2021, 1950, -1)),
              fill = t_ave)) +
   geom_density_ridges(bandwidth = 0.3, scale = 3,
-                      size = 0.2, color="white") +
+                      lwd = 0.1, color="white") +
   scale_fill_gradient2(low = "darkblue", mid = "white", high = "darkred",
                        midpoint = 0, guide = "none") +
   coord_cartesian(xlim=c(-5, 5)) +
@@ -56,15 +56,16 @@ t_data %>%
   labs(y = NULL, 
        x = "Temperature anomaly (\u00B0 C)",
        title = "Land Temperature Anomaly Distribution") +
+  hrbrthemes::theme_ft_rc() +
   theme(
-    text = element_text(color="white"),
-    panel.background = element_rect(fill = "black"),
-    plot.background = element_rect(fill = "black", color="black"),
+    #text = element_text(color="white"),
+    #panel.background = element_rect(fill = "black"),
+    #plot.background = element_rect(fill = "black", color="black"),
     panel.grid = element_blank(),
-    axis.text = element_text(color = "white"),
-    axis.ticks = element_line(color = "white"),
+    #axis.text = element_text(color = "white"),
+    #axis.ticks = element_line(color = "white"),
     axis.ticks.y = element_blank(),
-    axis.line.x = element_line(color="white"),
+    #axis.line.x = element_line(color="white"),
     axis.line.y = element_blank()
   )
   

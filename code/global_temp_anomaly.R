@@ -49,9 +49,11 @@ t_data %>%
   # filter(year == 2000) %>%
   ggplot(aes(x=longitude, y = latitude, fill = t_diff)) +
   geom_raster() +
-  scale_fill_gradient2(name = "Anomaly (\u00B0 C)",
-                       low = "darkblue", mid = "white", high ="darkred", 
-                       midpoint = 0,
+  scico::scale_fill_scico(palette = "vik",
+  #scale_fill_gradient2(
+    name = "Anomaly (\u00B0 C)",
+                       #low = "darkblue", mid = "white", high ="darkred", 
+                       #midpoint = 0,
                        limits = c(-5, 5),
                        breaks = c(-4, -2, 0, 2, 4)) + 
   facet_grid(decade~single, switch = "y") +
@@ -59,20 +61,22 @@ t_data %>%
   labs(x = NULL,
        y = NULL,
        title = "Global annual temperature anomalies between 1950 and 2021") +
+  hrbrthemes::theme_ft_rc() +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
-        panel.background = element_rect(fill = "black"),
-        plot.background = element_rect(fill = "black", color = "black"),
-        plot.title = element_text(color = "white", face = "bold"),
+        #panel.background = element_rect(fill = "black"),
+        #plot.background = element_rect(fill = "black", color = "black"),
+        #plot.title = element_text(color = "white", face = "bold"),
         panel.grid = element_blank(),
         strip.text.x = element_blank(),
         strip.text.y.left = element_text(angle = 0, color ="white"),
         strip.background = element_blank(),
         legend.position = c(0.75, 0.05),
         legend.direction = "horizontal",
-        legend.text = element_text(color="white", size = 5),
-        legend.title = element_text(color="white", size = 6),
-        legend.background = element_rect(fill ="black")) +
+        #legend.text = element_text(color="white", size = 5),
+        #legend.title = element_text(color="white", size = 6),
+        #legend.background = element_rect(fill ="black")
+        ) +
   guides(fill = guide_colorbar(title.position = "top",
                                title.hjust = 0.5))
 

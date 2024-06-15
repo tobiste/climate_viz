@@ -47,19 +47,6 @@ t_data %>%
   labs(x = NULL,
        y = "Temperature change since pre-industrial time [\u00B0C]",
        title = "Global temperature change since 1880 by month") +
-  theme(
-    panel.background = element_rect(fill="black", color="white", size=1),
-    plot.background = element_rect(fill = "#444444"),
-    panel.grid = element_blank(),
-    axis.text = element_text(color="white", size=13),
-    axis.ticks = element_line(color="white"),
-    axis.ticks.length = unit(-5, "pt"),
-    axis.title = element_text(color="white", size=13),
-    plot.title = element_text(color="white", hjust = 0.5,size = 15),
-    legend.title = element_blank(),
-    legend.background = element_rect(fill = NA),
-    legend.text = element_text(color="white"),
-    legend.key.height = unit(55, "pt")
-  )
+  hrbrthemes::theme_ft_rc()
 
 ggsave("figures/temperature_lines.png", width=8, height=4.5)

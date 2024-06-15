@@ -35,7 +35,7 @@ local_weather %>%
   ggplot(aes(x = month, y = t_diff, group =year, color=is_this_year)) +
   geom_line() +
   scale_color_manual(breaks = c(F, T),
-                     values = c("lightgray", "dodgerblue"),
+                     values = c("darkgray", "darkred"),
                      guide = "none") +
-  theme_classic()
+  hrbrthemes::theme_ipsum()
   

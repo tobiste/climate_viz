@@ -9,15 +9,17 @@ inventory <- read_table(inventory_url,
                                       "variable", "start", "end"))
 
 
-#Coordinates for Dexter, MI
-my_lat <- 42.33831964441621 * 2 * pi / 360
-my_lon <- -83.88938389977316 * 2 * pi / 360
+#Coordinates forThunder Bay, ON
+my_lat <- 48.43350841378263 * 2 * pi / 360
+my_lon <- -89.22415741056459 * 2 * pi / 360
 
 
 # Distance, d = 3963.0 * arccos[(sin(lat1) * sin(lat2)) + cos(lat1) * cos(lat2) * cos(long2 – long1)]
 # 
 # The obtained distance, d, is in miles. If you want your value to be in units of kilometers, multiple d by 1.609344.
 # d in kilometers = 1.609344 * d in miles
+
+this_year = year(today())
 
 my_station <- inventory %>%
   mutate(lat_r = lat *2 *pi/360,
@@ -26,7 +28,7 @@ my_station <- inventory %>%
                                       cos(lat_r) * cos(my_lat) *
                                       cos(my_lon - lon_r))
          ) %>%
-  filter(start < 1960 & end > 2020) %>%
+  filter(start < 1960 & end > 2023) %>%
   top_n(n = -1, d) %>%
   distinct(station) %>%
   pull(station)
@@ -46,3 +48,4 @@ local_weather <- read_csv(station_daily,
   mutate(snow = if_else(snow < 500, snow, NA_real_),
          prcp = if_else(prcp < 200, prcp, NA_real_)
   )
+
